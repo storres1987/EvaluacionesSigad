@@ -1,7 +1,7 @@
 package es.open4job.sigad.VO;
 
 public class Notas {
-	private int id;
+	private int id_nota;
 	private int nota;
 	private int id_ensenanza;
 	private int id_curso;
@@ -14,7 +14,7 @@ public class Notas {
 	}
 	
 	public Notas(int id, int nota, int id_ensenanza, int id_curso, int id_evaluacion, int id_alumno) {
-		this.id = id;
+		this.id_nota = id;
 		this.nota = nota;
 		this.id_ensenanza = id_ensenanza;
 		this.id_curso = id_curso;
@@ -23,12 +23,12 @@ public class Notas {
 	}
 
 	public int getId() {
-		return id;
+		return id_nota;
 	}
 
 
 	public void setId(int id) {
-		this.id = id;
+		this.id_nota = id;
 	}
 
 

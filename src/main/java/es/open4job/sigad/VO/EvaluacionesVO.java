@@ -3,7 +3,7 @@ package es.open4job.sigad.VO;
 import java.sql.Date;
 
 public class EvaluacionesVO {
-	private int id;
+	private int id_evaluacion;
 	private Date fecha_inicio;
 	private Date fecha_fin;
 	private Date fecha_evaluacion;
@@ -14,7 +14,7 @@ public class EvaluacionesVO {
 	}
 	
 	public EvaluacionesVO(int id, Date fecha_inicio, Date fecha_fin, Date fecha_evaluacion, Date fecha_publicacion) {
-		this.id = id;
+		this.id_evaluacion = id;
 		this.fecha_inicio = fecha_inicio;
 		this.fecha_fin = fecha_fin;
 		this.fecha_evaluacion = fecha_evaluacion;
@@ -22,11 +22,11 @@ public class EvaluacionesVO {
 	}
 
 	public int getId() {
-		return id;
+		return id_evaluacion;
 	}
 
 	public void setId(int id) {
-		this.id = id;
+		this.id_evaluacion = id;
 	}
 
 	public Date getFecha_inicio() {
