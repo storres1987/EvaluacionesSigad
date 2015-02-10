@@ -9,15 +9,16 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import es.open4job.sigad.VO.EvaluacionesVO;
-/*
 @ManagedBean
-@SessionScoped*/
+@SessionScoped
 public class EvaluacionesDAO {
 
 	private DataSource ds;
