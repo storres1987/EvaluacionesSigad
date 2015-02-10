@@ -26,7 +26,7 @@ public class EvaluacionesDAO {
 
 		try {
 			Context ctx = new InitialContext();
-			ds = (DataSource) ctx.lookup("java:/comp/env/jdbc/oracle");
+			ds = (DataSource) ctx.lookup("java:/comp/env/jdbc/Oracle");
 		} catch (NamingException e) {
 			e.printStackTrace();
 		}
