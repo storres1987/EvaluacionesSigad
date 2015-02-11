@@ -1,4 +1,4 @@
-package es.open4job.sigad.VO;
+package es.open4job.model.vo;
 
 import java.sql.Date;
 

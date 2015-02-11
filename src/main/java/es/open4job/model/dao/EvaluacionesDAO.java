@@ -1,4 +1,4 @@
-package es.open4job.sigad.DAO;
+package es.open4job.model.dao;
 
 import java.io.Serializable;
 import java.sql.Connection;
@@ -18,10 +18,10 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-import es.open4job.sigad.VO.EvaluacionesVO;
+import es.open4job.model.vo.EvaluacionesVO;
 @ManagedBean
 @RequestScoped
-public class EvaluacionesDAO implements Serializable{
+public class EvaluacionesDAO implements Serializable, EvaluacionesInterface{
 
 	/**
 	 * 
