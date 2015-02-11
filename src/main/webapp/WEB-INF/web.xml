@@ -3,7 +3,7 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-<display-name>JavaServerFaces</display-name>
+	<display-name>JavaServerFaces</display-name>
 	<!-- Change to "Production" when you are ready to deploy -->
 	<context-param>
 		<param-name>javax.faces.PROJECT_STAGE</param-name>
@@ -34,13 +34,14 @@
 	</servlet-mapping>
 	<!-- Welcome page -->
 	<welcome-file-list>
-		<welcome-file>faces/hello.xhtml</welcome-file>
+		<welcome-file>faces/listadoEvaluacion.xhtml</welcome-file>
 	</welcome-file-list>
 	<!-- Recurso JNDI -->
 	<resource-ref>
-		<description>Oracle Datasource example</description>
-		<res-ref-name>jdbc/Oracle</res-ref-name>
+		<description>MySQL Datasource example</description>
+		<res-ref-name>jdbc/opensigad2</res-ref-name>
 		<res-type>javax.sql.DataSource</res-type>
 		<res-auth>Container</res-auth>
 	</resource-ref>
+
 </web-app>

@@ -11,6 +11,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -19,16 +20,20 @@ import javax.sql.DataSource;
 
 import es.open4job.sigad.VO.EvaluacionesVO;
 @ManagedBean
-@SessionScoped
+@RequestScoped
 public class EvaluacionesDAO implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private DataSource ds;
 
 	public EvaluacionesDAO() {
 
 		try {
 			Context ctx = new InitialContext();
-			ds = (DataSource) ctx.lookup("java:/comp/env/jdbc/Oracle");
+			ds = (DataSource) ctx.lookup("java:/comp/env/jdbc/opensigad2");
 		} catch (NamingException e) {
 			e.printStackTrace();
 		}

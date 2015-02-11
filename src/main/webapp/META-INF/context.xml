@@ -32,9 +32,11 @@
     <Valve className="org.apache.catalina.valves.CometConnectionManagerValve" />
     -->
      <!-- Pool de conexion para Oracle -->
-<Resource name="jdbc/Oracle" auth="Container"
-type="javax.sql.DataSource" driverClassName="oracle.jdbc.OracleDriver"
-url="jdbc:oracle:thin:@54.154.192.80:1521:xe"
-username="open4job" password="open4job" maxActive="20" maxIdle="10"
-maxWait="-1"/>
+ 
+  <Resource name="jdbc/opensigad2" auth="Container" type="javax.sql.DataSource"
+               maxActive="50" maxIdle="30" maxWait="10000"
+               username="root" password="root" 
+               driverClassName="com.mysql.jdbc.Driver"
+               url="jdbc:mysql://192.168.26.67:3306/opensigad2"/>
+              
 </Context>
