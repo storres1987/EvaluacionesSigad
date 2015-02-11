@@ -1,5 +1,6 @@
 package es.open4job.sigad.DAO;
 
+import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,7 +20,7 @@ import javax.sql.DataSource;
 import es.open4job.sigad.VO.EvaluacionesVO;
 @ManagedBean
 @SessionScoped
-public class EvaluacionesDAO {
+public class EvaluacionesDAO implements Serializable{
 
 	private DataSource ds;
 
