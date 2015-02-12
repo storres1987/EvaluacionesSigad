@@ -1,12 +1,16 @@
 package es.open4job.controller;
 
-import java.sql.Date;
+import java.util.Date;
+import java.text.SimpleDateFormat;
+
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 
 import es.open4job.model.dao.AlumnoEvaluacionDAO;
 
-
+@ManagedBean
+@RequestScoped
 public class InsertarAlumnoEvaluacionBean {
-	private int idEvaluacion;
 	private int idEnsenanza;
 	private int idCurso;
 	private int evaluacion;
@@ -14,13 +18,7 @@ public class InsertarAlumnoEvaluacionBean {
 	private Date fechaFin;
 	private Date fechaSesion;
 	private Date fechaPublicacion;
-	
-	public int getIdEvaluacion() {
-		return idEvaluacion;
-	}
-	public void setIdEvaluacion(int idEvaluacion) {
-		this.idEvaluacion = idEvaluacion;
-	}
+
 	public int getIdEnsenanza() {
 		return idEnsenanza;
 	}
@@ -43,13 +41,13 @@ public class InsertarAlumnoEvaluacionBean {
 		return fechaInicio;
 	}
 	public void setFechaInicio(Date fechaInicio) {
-		this.fechaInicio = fechaInicio;
+		this.fechaInicio =  fechaInicio;
 	}
 	public Date getFechaFin() {
 		return fechaFin;
 	}
-	public void setFechaFin(Date fechaFin) {
-		this.fechaFin = fechaFin;
+	public void setFechaFin(java.util.Date  fechaFin) {
+		this.fechaFin = (Date)fechaFin;
 	}
 	public Date getFechaSesion() {
 		return fechaSesion;
@@ -63,12 +61,11 @@ public class InsertarAlumnoEvaluacionBean {
 	public void setFechaPublicacion(Date fechaPublicacion) {
 		this.fechaPublicacion = fechaPublicacion;
 	}
-	public String insertarEvaluacionAlumno(int idEvaluacion,int idEnseñanza, int idCurso, int evaluacion,
+	public String insertarEvaluacionAlumno(int idEnseñanza, int idCurso, int evaluacion,
 			Date fechaInicio,Date fechaFin, Date fechaSesion, Date fechaPublicacion) {
 		String pagina=null;
 		AlumnoEvaluacionDAO alumnoEvaluacionDAO = new AlumnoEvaluacionDAO();
-		
-		if (alumnoEvaluacionDAO.insertarEvaluacionAlumno(idEvaluacion, idEnseñanza, idCurso, evaluacion, fechaInicio, fechaFin, fechaSesion, fechaPublicacion)){
+		if (alumnoEvaluacionDAO.insertarEvaluacionAlumno(idEnseñanza, idCurso, evaluacion, fechaInicio, fechaFin, fechaSesion, fechaPublicacion)){
 			pagina = "insertarAlumnoEvaluacionExito";
 		}else{
 			pagina = "insertarAlumnoEvaluacionFallo";

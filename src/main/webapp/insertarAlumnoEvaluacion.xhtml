@@ -10,17 +10,16 @@
 <h:body>
 	<h1>Evaluacion del Alumno</h1>
 	<h:form>
-		Introduce la evaluacion del alumno idEvaluacion: 
-		<h:inputText value="#{insertarAlumnoEvaluacionBean.idEvaluacion}"></h:inputText>
+		Introduce los datos de la evaluacion
 		<br/>Id_Enseñanza<h:inputText value="#{insertarAlumnoEvaluacionBean.idEnsenanza}"></h:inputText>
 		<br/>Id Curso<h:inputText value="#{insertarAlumnoEvaluacionBean.idCurso}"></h:inputText>
 		<br/>Evaluacion<h:inputText value="#{insertarAlumnoEvaluacionBean.evaluacion}"></h:inputText>
-		<br/>Fecha Inicio<h:inputText value="#{insertarAlumnoEvaluacionBean.fechaInicio}"></h:inputText>
-		<br/>Fecha Fin<h:inputText value="#{insertarAlumnoEvaluacionBean.fechaFin}"></h:inputText>
-		<br/>Fecha Sesion<h:inputText value="#{insertarAlumnoEvaluacionBean.fechaSesion}"></h:inputText>
-		<br/>Fecha Publicacion<h:inputText value="#{insertarAlumnoEvaluacionBean.fechaPublicacion}"></h:inputText>
+		<br/>Fecha Inicio<h:inputText value="#{insertarAlumnoEvaluacionBean.fechaInicio}"> <f:convertDateTime pattern="d-M-yyyy" /></h:inputText>
+		<br/>Fecha Fin<h:inputText value="#{insertarAlumnoEvaluacionBean.fechaFin}"> <f:convertDateTime pattern="d-M-yyyy" /></h:inputText>
+		<br/>Fecha Sesion<h:inputText value="#{insertarAlumnoEvaluacionBean.fechaSesion}"> <f:convertDateTime pattern="d-M-yyyy" /></h:inputText>
+		<br/>Fecha Publicacion<h:inputText value="#{insertarAlumnoEvaluacionBean.fechaPublicacion}"> <f:convertDateTime pattern="d-M-yyyy" /></h:inputText>
 		
-		<br/><h:commandButton value="Guardar evaluacion del alumno" action="#{insertarAlumnoEvaluacionBean.insertarEvaluacionAlumno(insertarAlumnoEvaluacionBean.idEvaluacion,insertarAlumnoEvaluacionBean.idEnsenanza,insertarAlumnoNotaBean.idCurso,insertarAlumnoNotaBean.evaluacion,insertarAlumnoNotaBean.fechaInicio,insertarAlumnoNotaBean.fechaFin,insertarAlumnoNotaBean.fechaSesion,insertarAlumnoNotaBean.fechaPublicacion)}"></h:commandButton>
+		<br/><h:commandButton value="Guardar evaluacion del alumno" action="#{insertarAlumnoEvaluacionBean.insertarEvaluacionAlumno(insertarAlumnoEvaluacionBean.idEnsenanza,insertarAlumnoNotaBean.idCurso,insertarAlumnoNotaBean.evaluacion,insertarAlumnoNotaBean.fechaInicio,insertarAlumnoNotaBean.fechaFin,insertarAlumnoNotaBean.fechaSesion,insertarAlumnoNotaBean.fechaPublicacion)}"></h:commandButton>
 	</h:form>
 </h:body>
 </html>

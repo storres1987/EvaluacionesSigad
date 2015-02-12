@@ -102,29 +102,32 @@ public class AlumnoEvaluacionDAO implements Serializable,
 
 	// Crear nueva evaluacion
 
-	public boolean insertarEvaluacionAlumno(int idEvaluacion,
-			int idEnsenanza, int idCurso, int evaluacion, Date fechaInicio,
-			Date fechaFin, Date fechaSesion,Date fechaPublicacion) {
+	public boolean insertarEvaluacionAlumno(
+			int idEnsenanza, int idCurso, int evaluacion, java.util.Date fechaInicio,
+			java.util.Date fechaFin, java.util.Date fechaSesion,java.util.Date fechaPublicacion) {
 		try {
+			java.sql.Date fechaI = new java.sql.Date(fechaInicio.getTime());
+			java.sql.Date fechaF = new java.sql.Date(fechaFin.getTime());
+			java.sql.Date fechaS = new java.sql.Date(fechaSesion.getTime());
+			java.sql.Date fechaP = new java.sql.Date(fechaPublicacion.getTime());
 			Connection conn = ds.getConnection();
 			PreparedStatement pstm;
-			String query = "insert into evaluacion (id,id_enseñanza,id_curso,evaluacion,fecha_inicio,fecha_fin,fecha_sesion,fecha_publicacion) values (?,?,?,?,?,?,?,?)";
+			String query = "insert into evaluacion (id_enseñanza,id_curso,evaluacion,fecha_inicio,fecha_fin,fecha_sesion,fecha_publicacion) values (?,?,?,?,?,?,?)";
 			pstm = conn.prepareStatement(query);
-			pstm.setInt(1, idEvaluacion);
-			pstm.setInt(2, idEnsenanza);
-			pstm.setInt(3, idCurso);
-			pstm.setInt(4, evaluacion);
-			pstm.setDate(5, fechaInicio);
-			pstm.setDate(6, fechaFin);
-			pstm.setDate(7, fechaSesion);
-			pstm.setDate(8, fechaPublicacion);
+			pstm.setInt(1, idEnsenanza);
+			pstm.setInt(2, idCurso);
+			pstm.setInt(3, evaluacion);
+			pstm.setDate(4, fechaI);
+			pstm.setDate(5, fechaF);
+			pstm.setDate(6, fechaS);
+			pstm.setDate(7, fechaP);
 			pstm.execute();
 			return true;
 
 		} catch (Exception e) {
 			Logger.getLogger(getClass().getName()).log(
 					Level.SEVERE,
-					"Error en AlumnoEvaluacionDAO.insertarEvaluacionesAlumnoById:"
+					"Error en AlumnoEvaluacionDAO.insertarEvaluacionAlumno:"
 							+ e.getMessage());
 		}
 		return false;
@@ -142,6 +145,13 @@ public class AlumnoEvaluacionDAO implements Serializable,
 	public AlumnoEvaluacionVO getDetalleEvaluacion(int idEvaluacion) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public boolean insertarEvaluacionAlumno(int idEnsenanza, int idCurso,
+			int evaluacion, Date fechaInicio, Date fechaFin, Date fechaSesion,
+			Date fechaPublicacion) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	
