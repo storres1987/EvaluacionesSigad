@@ -2,12 +2,13 @@ package es.open4job.model.dao;
 
 import java.io.Serializable;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -17,7 +18,6 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import es.open4job.model.vo.*;
-
 
 public class AlumnoEvaluacionDAO implements Serializable,
 		AlumnoEvaluacionInterfaz {
@@ -69,7 +69,7 @@ public class AlumnoEvaluacionDAO implements Serializable,
 	}
 
 	public AlumnoEvaluacionVO getDetalleAlumnoEvaluacion(int idEvaluacion) {
-				
+
 		AlumnoEvaluacionVO evaluacionVO = null;
 		Connection con = null;
 		PreparedStatement ps = null;
@@ -84,9 +84,9 @@ public class AlumnoEvaluacionDAO implements Serializable,
 			result = ps.executeQuery();
 
 			while (result.next()) {
-				evaluacionVO = new AlumnoEvaluacionVO(result.getInt("idEvaluacion"),
-						result.getInt("idEnseñanza"),
-						result.getInt("idCurso"),
+				evaluacionVO = new AlumnoEvaluacionVO(
+						result.getInt("idEvaluacion"),
+						result.getInt("idEnseñanza"), result.getInt("idCurso"),
 						result.getInt("evaluacion"),
 						result.getDate("fechaInicio"),
 						result.getDate("fechaFin"),
@@ -102,14 +102,16 @@ public class AlumnoEvaluacionDAO implements Serializable,
 
 	// Crear nueva evaluacion
 
-	public boolean insertarEvaluacionAlumno(
-			int idEnsenanza, int idCurso, int evaluacion, java.util.Date fechaInicio,
-			java.util.Date fechaFin, java.util.Date fechaSesion,java.util.Date fechaPublicacion) {
+	public boolean insertarEvaluacionAlumno(int idEnsenanza, int idCurso,
+			int evaluacion, Date fechaInicio, Date fechaFin, Date fechaSesion,
+			Date fechaPublicacion) {
 		try {
+
 			java.sql.Date fechaI = new java.sql.Date(fechaInicio.getTime());
 			java.sql.Date fechaF = new java.sql.Date(fechaFin.getTime());
 			java.sql.Date fechaS = new java.sql.Date(fechaSesion.getTime());
 			java.sql.Date fechaP = new java.sql.Date(fechaPublicacion.getTime());
+
 			Connection conn = ds.getConnection();
 			PreparedStatement pstm;
 			String query = "insert into evaluacion (id_enseñanza,id_curso,evaluacion,fecha_inicio,fecha_fin,fecha_sesion,fecha_publicacion) values (?,?,?,?,?,?,?)";
@@ -132,14 +134,24 @@ public class AlumnoEvaluacionDAO implements Serializable,
 		}
 		return false;
 	}
+
 	public void EditarEvaluacionesVO() {
 		// TODO Auto-generated method stub
 
 	}
 
-	public void EliminarEvaluacionesVO() {
-		// TODO Auto-generated method stub
-
+	public void EliminarEvaluacionAlumno(int idEvaluacion) {
+		
+			 Connection conexion; 
+			 try { 
+			conexion = ds.getConnection();
+			  PreparedStatement pstm = conexion
+			  .prepareStatement("DELETE FROM evaluacion WHERE id=?");
+			 pstm.setInt(1,idEvaluacion); 
+			 pstm.executeUpdate(); 
+			 } catch (SQLException e) {
+			  e.printStackTrace(); }
+			 
 	}
 
 	public AlumnoEvaluacionVO getDetalleEvaluacion(int idEvaluacion) {
@@ -147,17 +159,6 @@ public class AlumnoEvaluacionDAO implements Serializable,
 		return null;
 	}
 
-	public boolean insertarEvaluacionAlumno(int idEnsenanza, int idCurso,
-			int evaluacion, Date fechaInicio, Date fechaFin, Date fechaSesion,
-			Date fechaPublicacion) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	
-
-	
-	
 	/*
 	 * Editar una evaluacion public void EditarEvaluacionesVO() { try
 	 * {EvaluacionVO Connection conexion = ds.getConnection(); PreparedStatement
@@ -174,13 +175,6 @@ public class AlumnoEvaluacionDAO implements Serializable,
 	 * Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage());
 	 * } }
 	 * 
-	 * // Eliminar una evaluacion public void EliminarEvaluacionesVO(){
-	 * Connection conexion; try { conexion = ds.getConnection();
-	 * PreparedStatement pstm = conexion
-	 * .prepareStatement("DELETE FROM evaluacion WHERE id=?");
-	 * //pstm.setInt(1,); pstm.executeUpdate(); } catch (SQLException e) {
-	 * e.printStackTrace(); }
-	 * 
-	 * }
+	 *
 	 */
 }
