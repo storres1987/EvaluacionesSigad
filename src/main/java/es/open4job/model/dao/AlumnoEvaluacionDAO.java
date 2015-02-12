@@ -120,6 +120,29 @@ public class AlumnoEvaluacionDAO implements Serializable,
 		 */
 	}
 
+	public boolean insertarEValuacionesAlumnoById(int idMatricula,
+			int idEnsenanza, int idMateria, int idEvaluacion, int nota) {
+		try {
+			Connection conn = ds.getConnection();
+			PreparedStatement pstm;
+			String query = "insert into evaluacion (id_matricula,id_ensenanza,id_materia, id_evaluacion,nota) values (?,?,?,?,?)";
+			pstm = conn.prepareStatement(query);
+			pstm.setInt(1, idMatricula);
+			pstm.setInt(2, idEnsenanza);
+			pstm.setInt(3, idMateria);
+			pstm.setInt(4, idEvaluacion);
+			pstm.setInt(5, nota);
+			pstm.execute();
+			return true;
+
+		} catch (Exception e) {
+			Logger.getLogger(getClass().getName()).log(
+					Level.SEVERE,
+					"Error en AlumnoEvaluacionDAO.insertarEvaluacionesAlumnoByIdMatricula:"
+							+ e.getMessage());
+		}
+		return false;
+	}
 	public void EditarEvaluacionesVO() {
 		// TODO Auto-generated method stub
 
