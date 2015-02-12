@@ -34,7 +34,7 @@
 	</servlet-mapping>
 	<!-- Welcome page -->
 	<welcome-file-list>
-		<welcome-file>faces/borrarevaluacion.xhtml</welcome-file>
+		<welcome-file>faces/index.xhtml</welcome-file>
 	</welcome-file-list>
 	<!-- Recurso JNDI -->
 	<resource-ref>
