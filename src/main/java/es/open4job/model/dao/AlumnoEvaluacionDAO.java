@@ -2,6 +2,7 @@ package es.open4job.model.dao;
 
 import java.io.Serializable;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -100,45 +101,30 @@ public class AlumnoEvaluacionDAO implements Serializable,
 	}
 
 	// Crear nueva evaluacion
-	public void InsertarEvaluacionesVO() {
-		/*
-		 * try { EvaluacionVO evaluacion = new EvaluacionVO(); Connection
-		 * conexion = ds.getConnection(); PreparedStatement pstm = conexion
-		 * .prepareStatement("Insert into evaluacion Values (?,?,?,?,?,?,?,?)");
-		 * pstm.setInt(1, evaluacion.getId_evaluacion()); pstm.setInt(2,
-		 * evaluacion.getId_ensenanza()); pstm.setInt(3,
-		 * evaluacion.getId_curso()); pstm.setInt(4,
-		 * evaluacion.getEvaluacion()); pstm.setDate(5,
-		 * evaluacion.getFecha_inicio()); pstm.setDate(6,
-		 * evaluacion.getFecha_sesion()); pstm.setDate(7,
-		 * evaluacion.getFecha_fin()); pstm.setDate(8,
-		 * evaluacion.getFecha_publicacion()); pstm.execute(); } catch
-		 * (Exception e) {
-		 * 
-		 * Logger.getLogger(getClass().getName()).log(Level.SEVERE,
-		 * e.getMessage()); }
-		 */
-	}
 
-	public boolean insertarEValuacionesAlumnoById(int idMatricula,
-			int idEnsenanza, int idMateria, int idEvaluacion, int nota) {
+	public boolean insertarEvaluacionAlumno(int idEvaluacion,
+			int idEnsenanza, int idCurso, int evaluacion, Date fechaInicio,
+			Date fechaFin, Date fechaSesion,Date fechaPublicacion) {
 		try {
 			Connection conn = ds.getConnection();
 			PreparedStatement pstm;
-			String query = "insert into evaluacion (id_matricula,id_ensenanza,id_materia, id_evaluacion,nota) values (?,?,?,?,?)";
+			String query = "insert into evaluacion (id,id_enseñanza,id_curso,evaluacion,fecha_inicio,fecha_fin,fecha_sesion,fecha_publicacion) values (?,?,?,?,?,?,?,?)";
 			pstm = conn.prepareStatement(query);
-			pstm.setInt(1, idMatricula);
+			pstm.setInt(1, idEvaluacion);
 			pstm.setInt(2, idEnsenanza);
-			pstm.setInt(3, idMateria);
-			pstm.setInt(4, idEvaluacion);
-			pstm.setInt(5, nota);
+			pstm.setInt(3, idCurso);
+			pstm.setInt(4, evaluacion);
+			pstm.setDate(5, fechaInicio);
+			pstm.setDate(6, fechaFin);
+			pstm.setDate(7, fechaSesion);
+			pstm.setDate(8, fechaPublicacion);
 			pstm.execute();
 			return true;
 
 		} catch (Exception e) {
 			Logger.getLogger(getClass().getName()).log(
 					Level.SEVERE,
-					"Error en AlumnoEvaluacionDAO.insertarEvaluacionesAlumnoByIdMatricula:"
+					"Error en AlumnoEvaluacionDAO.insertarEvaluacionesAlumnoById:"
 							+ e.getMessage());
 		}
 		return false;
@@ -158,6 +144,10 @@ public class AlumnoEvaluacionDAO implements Serializable,
 		return null;
 	}
 
+	
+
+	
+	
 	/*
 	 * Editar una evaluacion public void EditarEvaluacionesVO() { try
 	 * {EvaluacionVO Connection conexion = ds.getConnection(); PreparedStatement

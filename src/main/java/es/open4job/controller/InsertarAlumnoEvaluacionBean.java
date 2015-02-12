@@ -6,6 +6,7 @@ import es.open4job.model.dao.AlumnoEvaluacionDAO;
 
 
 public class InsertarAlumnoEvaluacionBean {
+	private int idEvaluacion;
 	private int idEnsenanza;
 	private int idCurso;
 	private int evaluacion;
@@ -13,6 +14,13 @@ public class InsertarAlumnoEvaluacionBean {
 	private Date fechaFin;
 	private Date fechaSesion;
 	private Date fechaPublicacion;
+	
+	public int getIdEvaluacion() {
+		return idEvaluacion;
+	}
+	public void setIdEvaluacion(int idEvaluacion) {
+		this.idEvaluacion = idEvaluacion;
+	}
 	public int getIdEnsenanza() {
 		return idEnsenanza;
 	}
@@ -55,15 +63,16 @@ public class InsertarAlumnoEvaluacionBean {
 	public void setFechaPublicacion(Date fechaPublicacion) {
 		this.fechaPublicacion = fechaPublicacion;
 	}
-	public String insertarAlumnoEvaluacion() {
+	public String insertarEvaluacionAlumno(int idEvaluacion,int idEnseñanza, int idCurso, int evaluacion,
+			Date fechaInicio,Date fechaFin, Date fechaSesion, Date fechaPublicacion) {
 		String pagina=null;
 		AlumnoEvaluacionDAO alumnoEvaluacionDAO = new AlumnoEvaluacionDAO();
-		/*
-		if (alumnoNotaDAO.InsertarEvaluacionesVO()){
+		
+		if (alumnoEvaluacionDAO.insertarEvaluacionAlumno(idEvaluacion, idEnseñanza, idCurso, evaluacion, fechaInicio, fechaFin, fechaSesion, fechaPublicacion)){
 			pagina = "insertarAlumnoEvaluacionExito";
 		}else{
 			pagina = "insertarAlumnoEvaluacionFallo";
-		}*/
+		}
 		return pagina;
 	}
 	
