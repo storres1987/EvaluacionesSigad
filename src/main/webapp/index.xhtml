@@ -15,7 +15,12 @@
 			action="#{verAlumnoEvaluacionFichaBean.getDetalleAlumnoEvaluacion(verAlumnoEvaluacionFichaBean.id)}"></h:commandButton>
 	</h:form>
 	<br /><a href="insertarAlumnoEvaluacion.xhtml">Insertar evaluacion para un alumno</a>
-<br /><a href="eliminarAlumnoEvaluacion.xhtml">Eliminar una evaluacion</a>
+Eliminar evaluacion
+<h:form>
+		<h:inputText value="#{eliminarAlumnoEvaluacionBean.idEvaluacion}" />
+		<h:commandButton value="Eliminar Evaluacion"
+			action="#{eliminarAlumnoEvaluacionFichaBean.eliminarEvaluacionAlumno(eliminarAlumnoEvaluacionBean.idEvaluacion)}"></h:commandButton>
+	</h:form>
 </h:body>
 </html>
 
