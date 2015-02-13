@@ -155,7 +155,7 @@ public class AlumnoEvaluacionDAO implements Serializable,
 
 	}
 
-	public void EliminarEvaluacionAlumno(int idEvaluacion) {
+	public boolean EliminarEvaluacionAlumno(int idEvaluacion) {
 
 		Connection conexion = null;
 		PreparedStatement pstm = null;
@@ -165,12 +165,14 @@ public class AlumnoEvaluacionDAO implements Serializable,
 					.prepareStatement("DELETE FROM evaluacion WHERE id=?");
 			pstm.setInt(1, idEvaluacion);
 			pstm.executeUpdate();
+			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
 			try { pstm.close(); } catch (Exception e) {}
 			try { conexion.close(); } catch (Exception e) {}
 		}
+		return false;
 
 	}
 }

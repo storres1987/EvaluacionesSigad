@@ -16,6 +16,6 @@ public interface AlumnoEvaluacionInterfaz {
 	 * fechaPublicacion);
 	 */public abstract void EditarEvaluacionesVO();
 
-	public void EliminarEvaluacionAlumno(int idEvaluacion);
+	public boolean EliminarEvaluacionAlumno(int idEvaluacion);
 
 }
