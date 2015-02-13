@@ -22,55 +22,72 @@ public class InsertarAlumnoEvaluacionBean {
 	public int getIdEnsenanza() {
 		return idEnsenanza;
 	}
+
 	public void setIdEnsenanza(int idEnsenanza) {
 		this.idEnsenanza = idEnsenanza;
 	}
+
 	public int getIdCurso() {
 		return idCurso;
 	}
+
 	public void setIdCurso(int idCurso) {
 		this.idCurso = idCurso;
 	}
+
 	public int getEvaluacion() {
 		return evaluacion;
 	}
+
 	public void setEvaluacion(int evaluacion) {
 		this.evaluacion = evaluacion;
 	}
+
 	public Date getFechaInicio() {
 		return fechaInicio;
 	}
+
 	public void setFechaInicio(Date fechaInicio) {
-		this.fechaInicio =  fechaInicio;
+		this.fechaInicio = fechaInicio;
 	}
+
 	public Date getFechaFin() {
 		return fechaFin;
 	}
-	public void setFechaFin(java.util.Date  fechaFin) {
-		this.fechaFin = (Date)fechaFin;
+
+	public void setFechaFin(java.util.Date fechaFin) {
+		this.fechaFin = (Date) fechaFin;
 	}
+
 	public Date getFechaSesion() {
 		return fechaSesion;
 	}
+
 	public void setFechaSesion(Date fechaSesion) {
 		this.fechaSesion = fechaSesion;
 	}
+
 	public Date getFechaPublicacion() {
 		return fechaPublicacion;
 	}
+
 	public void setFechaPublicacion(Date fechaPublicacion) {
 		this.fechaPublicacion = fechaPublicacion;
 	}
-	public String insertarEvaluacionAlumno(int idEnseñanza, int idCurso, int evaluacion,
-			Date fechaInicio,Date fechaFin, Date fechaSesion, Date fechaPublicacion) {
-		String pagina=null;
+
+	public String insertarEvaluacionAlumno(int idEnseñanza, int idCurso,
+			int evaluacion, Date fechaInicio, Date fechaFin, Date fechaSesion,
+			Date fechaPublicacion) {
+		String pagina = null;
 		AlumnoEvaluacionDAO alumnoEvaluacionDAO = new AlumnoEvaluacionDAO();
-		if (alumnoEvaluacionDAO.insertarEvaluacionAlumno(idEnseñanza, idCurso, evaluacion, fechaInicio, fechaFin, fechaSesion, fechaPublicacion)){
+		if (alumnoEvaluacionDAO.insertarEvaluacionAlumno(idEnseñanza, idCurso,
+				evaluacion, fechaInicio, fechaFin, fechaSesion,
+				fechaPublicacion)) {
 			pagina = "insertarAlumnoEvaluacionExito";
-		}else{
+		} else {
 			pagina = "insertarAlumnoEvaluacionFallo";
 		}
 		return pagina;
 	}
-	
+
 }

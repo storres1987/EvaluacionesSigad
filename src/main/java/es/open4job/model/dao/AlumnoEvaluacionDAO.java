@@ -6,7 +6,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
@@ -68,36 +67,37 @@ public class AlumnoEvaluacionDAO implements Serializable,
 		return listaEvaluaciones;
 	}
 
-	public AlumnoEvaluacionVO getDetalleAlumnoEvaluacion(int idEvaluacion) {
+	public ArrayList<AlumnoEvaluacionVO> getDetalleEvaluacion(int idEvaluacion) {
 
-		AlumnoEvaluacionVO evaluacionVO = null;
-		Connection con = null;
-		PreparedStatement ps = null;
-		ResultSet result = null;
+		ArrayList<AlumnoEvaluacionVO> detalleEvaluaciones = new ArrayList<AlumnoEvaluacionVO>();
 
 		try {
-			new ArrayList<AlumnoEvaluacionVO>();
-			con = ds.getConnection();
-			ps = con.prepareStatement("SELECT * FROM alumno where id =?");
-			ps.setInt(1, idEvaluacion);
+			Connection conexion = ds.getConnection();
+			PreparedStatement pstm;
+			Statement stm = conexion.createStatement();
+			ResultSet rs;
+			String consulta = "SELECT * FROM evaluacion where id =?";
+			pstm = conexion.prepareStatement(consulta);
+			pstm.setInt(1, idEvaluacion);
+			rs = pstm.executeQuery();
 
-			result = ps.executeQuery();
-
-			while (result.next()) {
-				evaluacionVO = new AlumnoEvaluacionVO(
-						result.getInt("idEvaluacion"),
-						result.getInt("idEnseñanza"), result.getInt("idCurso"),
-						result.getInt("evaluacion"),
-						result.getDate("fechaInicio"),
-						result.getDate("fechaFin"),
-						result.getDate("fechaSesion"),
-						result.getDate("fechaPublicacion"));
+			while (rs.next()) {
+				AlumnoEvaluacionVO detalleEvaluacinesVO = new AlumnoEvaluacionVO();
+				detalleEvaluacinesVO.setEvaluacion(rs.getInt("id"));
+				detalleEvaluacinesVO.setIdEnsenanza(rs.getInt("id_ensenanza"));
+				detalleEvaluacinesVO.setIdCurso(rs.getInt("id_curso"));
+				detalleEvaluacinesVO.setEvaluacion(rs.getInt("evaluacion"));
+				detalleEvaluacinesVO.setFechaInicio(rs.getDate("fecha_inicio"));
+				detalleEvaluacinesVO.setFechaSesion(rs.getDate("fecha_sesion"));
+				detalleEvaluacinesVO.setFechaFin(rs.getDate("fecha_final"));
+				detalleEvaluacinesVO.setFechaPublicacion(rs
+						.getDate("fecha_publicacion"));
+				detalleEvaluaciones.add(detalleEvaluacinesVO);
 			}
 		} catch (SQLException e) {
 			logger.log(Level.SEVERE, "SQLException : " + e.getMessage());
 		}
-
-		return evaluacionVO;
+		return detalleEvaluaciones;
 	}
 
 	// Crear nueva evaluacion
@@ -141,39 +141,16 @@ public class AlumnoEvaluacionDAO implements Serializable,
 	}
 
 	public void EliminarEvaluacionAlumno(int idEvaluacion) {
-	
-			 try { 
-				 Connection conexion = ds.getConnection();
-			  PreparedStatement pstm = conexion
-			  .prepareStatement("DELETE FROM evaluacion WHERE id=?");
-			 pstm.setInt(1,idEvaluacion); 
-			 pstm.executeUpdate(); 
-			 } catch (SQLException e) {
-			  e.printStackTrace(); }
-			 
-	}
 
-	public AlumnoEvaluacionVO getDetalleEvaluacion(int idEvaluacion) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+		try {
+			Connection conexion = ds.getConnection();
+			PreparedStatement pstm = conexion
+					.prepareStatement("DELETE FROM evaluacion WHERE id=?");
+			pstm.setInt(1, idEvaluacion);
+			pstm.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 
-	/*
-	 * Editar una evaluacion public void EditarEvaluacionesVO() { try
-	 * {EvaluacionVO Connection conexion = ds.getConnection(); PreparedStatement
-	 * pstm = conexion
-	 * .prepareStatement("Update evaluacion set id = ? , id_enseñanza = ? ," +
-	 * " id_curso = ?, evaluacion = ?, fecha_inicio = ?, " +
-	 * "fecha_sesion = ?, fecha_final = ? , fecha_publicacion = ? Where id= ?");
-	 * /*pstm.setInt(1, ); pstm.setInt(1, ); pstm.se// Editar una evaluacion
-	 * tInt(1, ); pstm.setInt(2, ); pstm.setDate(1, ); pstm.setDate(1, );
-	 * pstm.setDate(1, ); pstm.setDate(1, );
-	 * 
-	 * pstm.executeUpdate(); } catch (Exception e) {
-	 * 
-	 * Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage());
-	 * } }
-	 * 
-	 *
-	 */
+	}
 }

@@ -19,9 +19,10 @@ public class AlumnoEvaluacionVO implements Serializable {
 	public AlumnoEvaluacionVO() {
 		super();
 	}
-	
-	public AlumnoEvaluacionVO (int idEvaluacion, int idEnsenanza, int idCurso, int evaluacion,
-					Date fechaInicio, Date fechaFin, Date fechaSesion, Date fechaPublicacion) {
+
+	public AlumnoEvaluacionVO(int idEvaluacion, int idEnsenanza, int idCurso,
+			int evaluacion, Date fechaInicio, Date fechaFin, Date fechaSesion,
+			Date fechaPublicacion) {
 		this.idEvaluacion = idEvaluacion;
 		this.idEnsenanza = idEnsenanza;
 		this.idCurso = idCurso;
