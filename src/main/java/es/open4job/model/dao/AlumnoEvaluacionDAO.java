@@ -6,7 +6,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
@@ -17,7 +16,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-import es.open4job.model.vo.*;
+import es.open4job.model.vo.AlumnoEvaluacionVO;
 
 public class AlumnoEvaluacionDAO implements Serializable,
 		AlumnoEvaluacionInterfaz {
@@ -42,10 +41,13 @@ public class AlumnoEvaluacionDAO implements Serializable,
 	// Listar todas las evaluaciones
 	public ArrayList<AlumnoEvaluacionVO> getAlumnoEvaluacionListado() {
 		ArrayList<AlumnoEvaluacionVO> listaEvaluaciones = new ArrayList<AlumnoEvaluacionVO>();
+		Connection conn = null;
+		Statement stm = null;
+		ResultSet rs = null;
 		try {
-			Connection conexion = ds.getConnection();
-			Statement stm = conexion.createStatement();
-			ResultSet rs = stm.executeQuery("select * from evaluacion");
+			 conn = ds.getConnection();
+			 stm = conn.createStatement();
+			 rs = stm.executeQuery("select * from evaluacion");
 			while (rs.next()) {
 				AlumnoEvaluacionVO evaluacion = new AlumnoEvaluacionVO();
 				evaluacion.setIdEvaluacion(rs.getInt("id"));
@@ -64,6 +66,10 @@ public class AlumnoEvaluacionDAO implements Serializable,
 					Level.SEVERE,
 					"Error en EvaluacionesDAO.getallEvaluaciones:"
 							+ e.getMessage());
+		}finally {
+			try { stm.close(); } catch (Exception e) {}
+			try { conn.close(); } catch (Exception e) {}
+			try { rs.close(); } catch (Exception e) {}
 		}
 		return listaEvaluaciones;
 	}
@@ -105,6 +111,10 @@ public class AlumnoEvaluacionDAO implements Serializable,
 	public boolean insertarEvaluacionAlumno(int idEnsenanza, int idCurso,
 			int evaluacion, Date fechaInicio, Date fechaFin, Date fechaSesion,
 			Date fechaPublicacion) {
+		
+		Connection conn = null;
+		PreparedStatement pstm = null;
+		
 		try {
 
 			java.sql.Date fechaI = new java.sql.Date(fechaInicio.getTime());
@@ -112,9 +122,8 @@ public class AlumnoEvaluacionDAO implements Serializable,
 			java.sql.Date fechaS = new java.sql.Date(fechaSesion.getTime());
 			java.sql.Date fechaP = new java.sql.Date(fechaPublicacion.getTime());
 
-			Connection conn = ds.getConnection();
-			PreparedStatement pstm;
-			String query = "insert into evaluacion (id_enseñanza,id_curso,evaluacion,fecha_inicio,fecha_fin,fecha_sesion,fecha_publicacion) values (?,?,?,?,?,?,?)";
+			conn = ds.getConnection();
+			String query = "insert into evaluacion (id_ensenanza,id_curso,evaluacion,fecha_inicio,fecha_final,fecha_sesion,fecha_publicacion) values (?,?,?,?,?,?,?)";
 			pstm = conn.prepareStatement(query);
 			pstm.setInt(1, idEnsenanza);
 			pstm.setInt(2, idCurso);
@@ -131,8 +140,13 @@ public class AlumnoEvaluacionDAO implements Serializable,
 					Level.SEVERE,
 					"Error en AlumnoEvaluacionDAO.insertarEvaluacionAlumno:"
 							+ e.getMessage());
+		} finally {
+			try { pstm.close(); } catch (Exception e) {}
+			try { conn.close(); } catch (Exception e) {}
 		}
+		
 		return false;
+	
 	}
 
 	public void EditarEvaluacionesVO() {
@@ -141,16 +155,21 @@ public class AlumnoEvaluacionDAO implements Serializable,
 	}
 
 	public void EliminarEvaluacionAlumno(int idEvaluacion) {
-	
-			 try { 
-				 Connection conexion = ds.getConnection();
-			  PreparedStatement pstm = conexion
-			  .prepareStatement("DELETE FROM evaluacion WHERE id=?");
-			 pstm.setInt(1,idEvaluacion); 
-			 pstm.executeUpdate(); 
-			 } catch (SQLException e) {
-			  e.printStackTrace(); }
-			 
+		Connection conexion = null;
+		PreparedStatement pstm = null;
+		try {
+			 conexion = ds.getConnection();
+			 pstm = conexion
+					.prepareStatement("DELETE FROM evaluacion WHERE id=?");
+			pstm.setInt(1, idEvaluacion);
+			pstm.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try { pstm.close(); } catch (Exception e) {}
+			try { conexion.close(); } catch (Exception e) {}
+		}
+
 	}
 
 	public AlumnoEvaluacionVO getDetalleEvaluacion(int idEvaluacion) {
@@ -173,7 +192,5 @@ public class AlumnoEvaluacionDAO implements Serializable,
 	 * 
 	 * Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage());
 	 * } }
-	 * 
-	 *
 	 */
 }
