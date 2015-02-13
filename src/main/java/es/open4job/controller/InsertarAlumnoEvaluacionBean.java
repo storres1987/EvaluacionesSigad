@@ -55,8 +55,8 @@ public class InsertarAlumnoEvaluacionBean {
 		return fechaFin;
 	}
 
-	public void setFechaFin(java.util.Date fechaFin) {
-		this.fechaFin = (Date) fechaFin;
+	public void setFechaFin(Date fechaFin) {
+		this.fechaFin = fechaFin;
 	}
 
 	public Date getFechaSesion() {
