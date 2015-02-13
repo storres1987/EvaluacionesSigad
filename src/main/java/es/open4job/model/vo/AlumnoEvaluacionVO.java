@@ -32,6 +32,10 @@ public class AlumnoEvaluacionVO implements Serializable {
 		this.fechaPublicacion = fechaPublicacion;
 	}
 
+	public int getIdEvaluacion() {
+		return idEvaluacion;
+	}
+
 	public void setIdEvaluacion(int idEvaluacion) {
 		this.idEvaluacion = idEvaluacion;
 	}

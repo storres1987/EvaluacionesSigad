@@ -32,7 +32,7 @@ public class AlumnoEvaluacionDAO implements Serializable,
 
 		try {
 			Context ctx = new InitialContext();
-			ds = (DataSource) ctx.lookup("java:/comp/env/jdbc/opensigad");
+			ds = (DataSource) ctx.lookup("java:/comp/env/jdbc/opensigad2");
 		} catch (NamingException e) {
 			e.printStackTrace();
 		}
@@ -141,10 +141,9 @@ public class AlumnoEvaluacionDAO implements Serializable,
 	}
 
 	public void EliminarEvaluacionAlumno(int idEvaluacion) {
-		
-			 Connection conexion; 
+	
 			 try { 
-			conexion = ds.getConnection();
+				 Connection conexion = ds.getConnection();
 			  PreparedStatement pstm = conexion
 			  .prepareStatement("DELETE FROM evaluacion WHERE id=?");
 			 pstm.setInt(1,idEvaluacion); 

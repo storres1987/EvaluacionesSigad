@@ -8,18 +8,22 @@
 	<h:outputStylesheet library="css" name="table-style.css" />
 </h:head>
 <h:body>
-    <h3>Detalle evaluacion</h3>
+	<h3>Detalle evaluacion</h3>
 	<h:form>
 		<h:inputText value="#{verAlumnoEvaluacionFichaBean.id}" />
 		<h:commandButton value="Ver Evaluacion"
 			action="#{verAlumnoEvaluacionFichaBean.getDetalleAlumnoEvaluacion(verAlumnoEvaluacionFichaBean.id)}"></h:commandButton>
 	</h:form>
-	<br /><a href="insertarAlumnoEvaluacion.xhtml">Insertar evaluacion para un alumno</a>
+	<br />
+	<a href="insertarAlumnoEvaluacion.xhtml">Insertar evaluacion para
+		un alumno</a>
 Eliminar evaluacion
 <h:form>
+	<!-- el id que se introduce lo manda a #{eliminarAlumnoEvaluacionBean.idEvaluacion} -->
 		<h:inputText value="#{eliminarAlumnoEvaluacionBean.idEvaluacion}" />
+		<!--  despues ejecuta el metodo del boton eliminarAlumnoEvaluacionBean.eliminarEvaluacionAlumno(eliminarAlumnoEvaluacionBean.idEvaluacion)-->
 		<h:commandButton value="Eliminar Evaluacion"
-			action="#{eliminarAlumnoEvaluacionFichaBean.eliminarEvaluacionAlumno(eliminarAlumnoEvaluacionBean.idEvaluacion)}"></h:commandButton>
+			action="#{eliminarAlumnoEvaluacionBean.eliminarEvaluacionAlumno(eliminarAlumnoEvaluacionBean.idEvaluacion)}"></h:commandButton>
 	</h:form>
 </h:body>
 </html>
