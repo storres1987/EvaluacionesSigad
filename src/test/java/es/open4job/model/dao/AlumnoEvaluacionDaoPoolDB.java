@@ -16,7 +16,7 @@ public class AlumnoEvaluacionDaoPoolDB extends AlumnoEvaluacionDAO {
 		String url = "jdbc:mysql://192.168.26.67:3306/opensigad2";
 		ds = setupDataSource(driver, user, password, url);
 	}
-	
+
 	private DataSource setupDataSource(String driver, String user,
 			String password, String url) {
 		BasicDataSource ds = new BasicDataSource();

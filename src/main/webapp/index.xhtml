@@ -8,6 +8,11 @@
 	
 </h:head>
 <h:body>
+<h3>Evaluaciones del Alumno</h3>
+	<h:form>
+		<h:commandButton value="Mostrar evaluaciones generales"
+			action="#{verAlumnoEvaluacionListadoBean.getAlumnoEvaluacionListado()}"></h:commandButton>
+	</h:form>
 	<h3>Detalle evaluacion</h3>
 	<h:form>
 		<h:inputText value="#{verAlumnoEvaluacionFichaBean.idEvaluacion}" />

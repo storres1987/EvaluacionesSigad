@@ -18,17 +18,14 @@ public class AlumnoEvaluacionDAOTest extends TestCase {
 
 	}
 
-	public void testgetDetalleEvaluacion(
-			int idEvaluacion) {
+	public void testgetDetalleEvaluacion() {
 		ArrayList<AlumnoEvaluacionVO> evaluacion = evaluacionDAO
-				.getDetalleEvaluacion(1);
+				.getDetalleEvaluacion(2);
 		assertTrue(evaluacion.size()>0);
 
 	}
 
-	public void testinsertarEvaluacionAlumno(int idEnsenanza, int idCurso,
-			int evaluacion, Date fechaInicio, Date fechaFin, Date fechaSesion,
-			Date fechaPublicacion) {
+	public void testinsertarEvaluacionAlumno() {
 
 		java.util.Date utilDate = new java.util.Date();
 		java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
