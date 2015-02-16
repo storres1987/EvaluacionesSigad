@@ -10,23 +10,23 @@ import junit.framework.TestCase;
 public class AlumnoEvaluacionDAOTest extends TestCase {
 	AlumnoEvaluacionDaoPoolDB evaluacionDAO = new AlumnoEvaluacionDaoPoolDB();
 
-	public ArrayList<AlumnoEvaluacionVO> testgetAlumnoEvaluacionListado() {
+	public void testgetAlumnoEvaluacionListado() {
 		ArrayList<AlumnoEvaluacionVO> evaluaciones = evaluacionDAO
 				.getAlumnoEvaluacionListado();
 		assertTrue(evaluaciones.size() > 0);
-		return evaluaciones;
+		
 
 	}
 
-	public ArrayList<AlumnoEvaluacionVO> testgetDetalleEvaluacion(
+	public void testgetDetalleEvaluacion(
 			int idEvaluacion) {
 		ArrayList<AlumnoEvaluacionVO> evaluacion = evaluacionDAO
 				.getDetalleEvaluacion(1);
-		return evaluacion;
+		assertTrue(evaluacion.size()>0);
 
 	}
 
-	public boolean testinsertarEvaluacionAlumno(int idEnsenanza, int idCurso,
+	public void testinsertarEvaluacionAlumno(int idEnsenanza, int idCurso,
 			int evaluacion, Date fechaInicio, Date fechaFin, Date fechaSesion,
 			Date fechaPublicacion) {
 
@@ -36,7 +36,7 @@ public class AlumnoEvaluacionDAOTest extends TestCase {
 		boolean funciona = evaluacionDAO.insertarEvaluacionAlumno(1, 1, 3,
 				sqlDate, sqlDate, sqlDate, sqlDate);
 		assertTrue(funciona == true);
-		return true;
+		
 
 	}
 
