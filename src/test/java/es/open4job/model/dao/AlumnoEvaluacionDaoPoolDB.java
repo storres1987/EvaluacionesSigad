@@ -13,7 +13,7 @@ public class AlumnoEvaluacionDaoPoolDB extends AlumnoEvaluacionDAO {
 		String driver = "com.mysql.jdbc.Driver";
 		String user = "root";
 		String password = "root";
-		String url = "jdbc:mysql://192.168.26.67:3306/opensigad2";
+		String url = "jdbc:mysql://192.168.26.67:3306/opensigad";
 		ds = setupDataSource(driver, user, password, url);
 	}
 

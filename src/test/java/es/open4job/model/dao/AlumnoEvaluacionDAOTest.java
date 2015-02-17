@@ -30,7 +30,7 @@ public class AlumnoEvaluacionDAOTest extends TestCase {
 		java.util.Date utilDate = new java.util.Date();
 		java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
 
-		boolean funciona = evaluacionDAO.insertarEvaluacionAlumno(1, 1, 3,
+		boolean funciona = evaluacionDAO.insertarEvaluacionAlumno(1, 1, "fdsf",
 				sqlDate, sqlDate, sqlDate, sqlDate);
 		assertTrue(funciona == true);
 		

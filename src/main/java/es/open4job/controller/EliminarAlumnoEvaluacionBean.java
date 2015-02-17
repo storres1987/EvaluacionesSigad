@@ -8,21 +8,21 @@ import es.open4job.model.dao.AlumnoEvaluacionDAO;
 @ManagedBean
 @RequestScoped
 public class EliminarAlumnoEvaluacionBean {
-	private int idEvaluacion;
+	private int id;
 
-	public int getIdEvaluacion() {
-		return idEvaluacion;
+	public int getId() {
+		return id;
 	}
 
-	public void setIdEvaluacion(int idEvaluacion) {
-		this.idEvaluacion = idEvaluacion;
+	public void setId(int id) {
+		this.id = id;
 	}
 
-	public String eliminarEvaluacionAlumno(int idEvaluacion) {
+	public String eliminarEvaluacionAlumno(int id) {
 		String pagina = null;
 		AlumnoEvaluacionDAO alumnoEvaluacionDAO = new AlumnoEvaluacionDAO();
 		
-		if(alumnoEvaluacionDAO.EliminarEvaluacionAlumno(idEvaluacion)){
+		if(alumnoEvaluacionDAO.EliminarEvaluacionAlumno(id)){
 			pagina = "eliminarAlumnoEvaluacion";
 		}else{
 			pagina = "eliminarAlumnoEvaluacionFallo";

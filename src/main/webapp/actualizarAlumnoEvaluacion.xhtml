@@ -12,13 +12,13 @@
 	<h:form>
 		Introduce los datos de la evaluacion a modificar
 		<br />Id_Evaluacion<h:inputText
-			value="#{actualizarAlumnoEvaluacionBean.idEvaluacion}"></h:inputText>
-		<br />Id_Enseñanza<h:inputText
-			value="#{actualizarAlumnoEvaluacionBean.idEnsenanza}"></h:inputText>
-		<br />Id_Curso<h:inputText
-			value="#{actualizarAlumnoEvaluacionBean.idCurso}"></h:inputText>
-		<br />Evaluacion<h:inputText
-			value="#{actualizarAlumnoEvaluacionBean.evaluacion}"></h:inputText>
+			value="#{actualizarAlumnoEvaluacionBean.id}"></h:inputText>
+		<br />Id Centro Estudio<h:inputText
+			value="#{actualizarAlumnoEvaluacionBean.idCentroEstudio}"></h:inputText>
+		<br />Numero<h:inputText
+			value="#{actualizarAlumnoEvaluacionBean.numero}"></h:inputText>
+		<br />Descripcion<h:inputText
+			value="#{actualizarAlumnoEvaluacionBean.descripcion}"></h:inputText>
 		<br />Fecha_Inicio<h:inputText
 			value="#{actualizarAlumnoEvaluacionBean.fechaInicio}">
 			<f:convertDateTime pattern="dd-mm-yyyy" />
@@ -38,10 +38,10 @@
 		<br />
 		<h:commandButton value="Actualizar notas del alumno"
 			action="#{actualizarAlumnoEvaluacionBean.actualizarEvaluacionAlumno
-			(actualizarAlumnoEvaluacionBean.idEvaluacion,
-		actualizarAlumnoEvaluacionBean.idEnsenanza,
-		actualizarAlumnoEvaluacionBean.idCurso,
-		actualizarAlumnoEvaluacionBean.evaluacion,
+			(actualizarAlumnoEvaluacionBean.id,
+		actualizarAlumnoEvaluacionBean.idCentroEstudio,
+		actualizarAlumnoEvaluacionBean.numero,
+		actualizarAlumnoEvaluacionBean.descripcion,
 		actualizarAlumnoEvaluacionBean.fechaInicio,
 		actualizarAlumnoEvaluacionBean.fechaFin,
 		actualizarAlumnoEvaluacionBean.fechaSesion,

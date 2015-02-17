@@ -15,10 +15,10 @@ import es.open4job.model.vo.AlumnoEvaluacionVO;
 @RequestScoped
 public class VerAlumnoEvaluacionListadoBean {
 
-	private int idEvaluacion;
-	private int idEnsenanza;
-	private int idCurso;
-	private int evaluacion;
+	private int id;
+	private int idCentroEstudio;
+	private int numero;
+	private String descripcion;
 	private Date fechaInicio;
 	private Date fechaFin;
 	private Date fechaSesion;
@@ -28,36 +28,42 @@ public class VerAlumnoEvaluacionListadoBean {
 
 	private ArrayList<AlumnoEvaluacionVO> alumnoEvaluacionListadoVO;
 	private ArrayList<String> listadoEnsenanzas;
-	public int getIdEvaluacion() {
-		return idEvaluacion;
+	
+
+	public int getId() {
+		return id;
 	}
 
-	public void setIdEvaluacion(int idEvaluacion) {
-		this.idEvaluacion = idEvaluacion;
+	public void setId(int id) {
+		this.id = id;
 	}
 
-	public int getIdEnsenanza() {
-		return idEnsenanza;
+	public int getIdCentroEstudio() {
+		return idCentroEstudio;
 	}
 
-	public void setIdEnsenanza(int idEnsenanza) {
-		this.idEnsenanza = idEnsenanza;
+	public void setIdCentroEstudio(int idCentroEstudio) {
+		this.idCentroEstudio = idCentroEstudio;
 	}
 
-	public int getIdCurso() {
-		return idCurso;
+	public int getNumero() {
+		return numero;
 	}
 
-	public void setIdCurso(int idCurso) {
-		this.idCurso = idCurso;
+	public void setNumero(int numero) {
+		this.numero = numero;
 	}
 
-	public int getEvaluacion() {
-		return evaluacion;
+	public String getDescripcion() {
+		return descripcion;
 	}
 
-	public void setEvaluacion(int evaluacion) {
-		this.evaluacion = evaluacion;
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
+	public Date getFechaInicio() {
+		return fechaInicio;
 	}
 
 	public Date gevaluacionVOetFechaInicio() {

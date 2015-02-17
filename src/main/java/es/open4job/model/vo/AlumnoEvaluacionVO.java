@@ -7,10 +7,10 @@ public class AlumnoEvaluacionVO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private int idEvaluacion;
-	private int idEnsenanza;
-	private int idCurso;
-	private int evaluacion;
+	private int id;
+	private int idCentroEstudio;
+	private int numero;
+	private String descripcion;
 	private Date fechaInicio;
 	private Date fechaFin;
 	private Date fechaSesion;
@@ -20,49 +20,50 @@ public class AlumnoEvaluacionVO implements Serializable {
 		super();
 	}
 
-	public AlumnoEvaluacionVO(int idEvaluacion, int idEnsenanza, int idCurso,
-			int evaluacion, Date fechaInicio, Date fechaFin, Date fechaSesion,
+	public AlumnoEvaluacionVO(int id, int idCentroEstudio, int numero,
+			String descripcion, Date fechaInicio, Date fechaFin, Date fechaSesion,
 			Date fechaPublicacion) {
-		this.idEvaluacion = idEvaluacion;
-		this.idEnsenanza = idEnsenanza;
-		this.idCurso = idCurso;
-		this.evaluacion = evaluacion;
+		this.id = id;
+		this.idCentroEstudio = idCentroEstudio;
+		this.numero = numero;
+		this.descripcion = descripcion;
 		this.fechaInicio = fechaInicio;
 		this.fechaFin = fechaFin;
 		this.fechaSesion = fechaSesion;
 		this.fechaPublicacion = fechaPublicacion;
 	}
 
-	public int getIdEvaluacion() {
-		return idEvaluacion;
+	
+	public int getId() {
+		return id;
 	}
 
-	public void setIdEvaluacion(int idEvaluacion) {
-		this.idEvaluacion = idEvaluacion;
+	public void setId(int id) {
+		this.id = id;
 	}
 
-	public int getIdEnsenanza() {
-		return idEnsenanza;
+	public int getIdCentroEstudio() {
+		return idCentroEstudio;
 	}
 
-	public void setIdEnsenanza(int idEnsenanza) {
-		this.idEnsenanza = idEnsenanza;
+	public void setIdCentroEstudio(int idCentroEstudio) {
+		this.idCentroEstudio = idCentroEstudio;
 	}
 
-	public int getIdCurso() {
-		return idCurso;
+	public int getNumero() {
+		return numero;
 	}
 
-	public void setIdCurso(int idCurso) {
-		this.idCurso = idCurso;
+	public void setNumero(int numero) {
+		this.numero = numero;
 	}
 
-	public int getEvaluacion() {
-		return evaluacion;
+	public String getDescripcion() {
+		return descripcion;
 	}
 
-	public void setEvaluacion(int evaluacion) {
-		this.evaluacion = evaluacion;
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 
 	public Date getFechaInicio() {

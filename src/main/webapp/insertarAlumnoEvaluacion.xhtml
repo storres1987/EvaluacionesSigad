@@ -3,7 +3,8 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<title>Evaluacion Alumno</title>
 </h:head>
@@ -11,12 +12,15 @@
 	<h1>Evaluacion del Alumno</h1>
 	<h:form>
 		Introduce los datos de la evaluacion
-		<br />Id_Enseñanza<h:inputText
-			value="#{insertarAlumnoEvaluacionBean.idEnsenanza}"></h:inputText>
-		<br />Id Curso<h:inputText
-			value="#{insertarAlumnoEvaluacionBean.idCurso}"></h:inputText>
-		<br />Evaluacion<h:inputText
-			value="#{insertarAlumnoEvaluacionBean.evaluacion}"></h:inputText>
+		<br />Id Centro Estudio<h:inputText
+			value="#{insertarAlumnoEvaluacionBean.idCentroEstudio}"></h:inputText>
+		<br />Numero<h:inputText
+			value="#{insertarAlumnoEvaluacionBean.numero}"></h:inputText>
+		<br />Descripcion
+		<p:inputText  value="#{insertarAlumnoEvaluacionBean.descripcion}" >
+		</p:inputText>
+		
+		
 		<br />Fecha Inicio<h:inputText
 			value="#{insertarAlumnoEvaluacionBean.fechaInicio}">
 			<f:convertDateTime pattern="dd-mm-yyyy" />
@@ -36,7 +40,7 @@
 
 		<br />
 		<h:commandButton value="Guardar evaluacion del alumno"
-			action="#{insertarAlumnoEvaluacionBean.insertarEvaluacionAlumno(insertarAlumnoEvaluacionBean.idEnsenanza, insertarAlumnoEvaluacionBean.idCurso, insertarAlumnoEvaluacionBean.evaluacion, insertarAlumnoEvaluacionBean.fechaInicio, insertarAlumnoEvaluacionBean.fechaFin, insertarAlumnoEvaluacionBean.fechaSesion, insertarAlumnoEvaluacionBean.fechaPublicacion)}"></h:commandButton>
+			action="#{insertarAlumnoEvaluacionBean.insertarEvaluacionAlumno(insertarAlumnoEvaluacionBean.idCentroEstudio, insertarAlumnoEvaluacionBean.numero, insertarAlumnoEvaluacionBean.descripcion, insertarAlumnoEvaluacionBean.fechaInicio, insertarAlumnoEvaluacionBean.fechaFin, insertarAlumnoEvaluacionBean.fechaSesion, insertarAlumnoEvaluacionBean.fechaPublicacion)}"></h:commandButton>
 	</h:form>
 </h:body>
 </html>

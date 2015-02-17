@@ -13,48 +13,47 @@ import es.open4job.model.dao.AlumnoEvaluacionDAO;
 @RequestScoped
 public class ActualizarAlumnoEvaluacionBean implements Serializable{
 
-	private int idEvaluacion;
-	private int idEnsenanza;
-	private int idCurso;
-	private int evaluacion;
+	private int id;
+	private int idCentroEstudio;
+	private int numero;
+	private String descripcion;
 	private Date fechaInicio;
 	private Date fechaFin;
 	private Date fechaSesion;
 	private Date fechaPublicacion;
 
-	public ActualizarAlumnoEvaluacionBean() {
+	
+
+	public int getId() {
+		return id;
 	}
 
-	public int getIdEvaluacion() {
-		return idEvaluacion;
+	public void setId(int id) {
+		this.id = id;
 	}
 
-	public void setIdEvaluacion(int idEvaluacion) {
-		this.idEvaluacion = idEvaluacion;
+	public int getIdCentroEstudio() {
+		return idCentroEstudio;
 	}
 
-	public int getIdEnsenanza() {
-		return idEnsenanza;
+	public void setIdCentroEstudio(int idCentroEstudio) {
+		this.idCentroEstudio = idCentroEstudio;
 	}
 
-	public void setIdEnsenanza(int idEnsenanza) {
-		this.idEnsenanza = idEnsenanza;
+	public int getNumero() {
+		return numero;
 	}
 
-	public int getIdCurso() {
-		return idCurso;
+	public void setNumero(int numero) {
+		this.numero = numero;
 	}
 
-	public void setIdCurso(int idCurso) {
-		this.idCurso = idCurso;
+	public String getDescripcion() {
+		return descripcion;
 	}
 
-	public int getEvaluacion() {
-		return evaluacion;
-	}
-
-	public void setEvaluacion(int evaluacion) {
-		this.evaluacion = evaluacion;
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 
 	public Date getFechaInicio() {
@@ -89,12 +88,12 @@ public class ActualizarAlumnoEvaluacionBean implements Serializable{
 		this.fechaPublicacion = fechaPublicacion;
 	}
 
-	public String actualizarEvaluacionAlumno(int idEvaluacion, int idEnsenanza, int idCurso, 
-		int evaluacion, Date fechaInicio, Date fechaFin, Date fechaSesion, Date fechaPublicacion) {
+	public String actualizarEvaluacionAlumno(int id, int idCentroEstudio, int numero, 
+		String descripcion, Date fechaInicio, Date fechaFin, Date fechaSesion, Date fechaPublicacion) {
 
 		String pagina = null;
 		AlumnoEvaluacionDAO alumnoEvaluacionDAO = new AlumnoEvaluacionDAO();
-		if (alumnoEvaluacionDAO.actualizarEvaluacionAlumno(idEvaluacion, idEnsenanza, idCurso, evaluacion, fechaInicio, fechaFin, fechaSesion, fechaPublicacion)) {
+		if (alumnoEvaluacionDAO.actualizarEvaluacionAlumno(id, idCentroEstudio, numero, descripcion, fechaInicio, fechaFin, fechaSesion, fechaPublicacion)) {
 			pagina = "actualizarAlumnoEvaluacionExito";
 		} else {
 			pagina = "actualizarAlumnoEvaluacionFallo";

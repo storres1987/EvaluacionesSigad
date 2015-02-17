@@ -11,36 +11,37 @@ import es.open4job.model.dao.AlumnoEvaluacionDAO;
 @ManagedBean
 @RequestScoped
 public class InsertarAlumnoEvaluacionBean {
-	private int idEnsenanza;
-	private int idCurso;
-	private int evaluacion;
+
+	private int idCentroEstudio;
+	private int numero;
+	private String descripcion;
 	private Date fechaInicio;
 	private Date fechaFin;
 	private Date fechaSesion;
 	private Date fechaPublicacion;
 
-	public int getIdEnsenanza() {
-		return idEnsenanza;
+	public int getIdCentroEstudio() {
+		return idCentroEstudio;
 	}
 
-	public void setIdEnsenanza(int idEnsenanza) {
-		this.idEnsenanza = idEnsenanza;
+	public void setIdCentroEstudio(int idCentroEstudio) {
+		this.idCentroEstudio = idCentroEstudio;
 	}
 
-	public int getIdCurso() {
-		return idCurso;
+	public int getNumero() {
+		return numero;
 	}
 
-	public void setIdCurso(int idCurso) {
-		this.idCurso = idCurso;
+	public void setNumero(int numero) {
+		this.numero = numero;
 	}
 
-	public int getEvaluacion() {
-		return evaluacion;
+	public String getDescripcion() {
+		return descripcion;
 	}
 
-	public void setEvaluacion(int evaluacion) {
-		this.evaluacion = evaluacion;
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 
 	public Date getFechaInicio() {
@@ -75,13 +76,13 @@ public class InsertarAlumnoEvaluacionBean {
 		this.fechaPublicacion = fechaPublicacion;
 	}
 
-	public String insertarEvaluacionAlumno(int idEnseñanza, int idCurso,
-			int evaluacion, Date fechaInicio, Date fechaFin, Date fechaSesion,
+	public String insertarEvaluacionAlumno(int idCentroEstudio, int numero,
+			String descripcion , Date fechaInicio, Date fechaFin, Date fechaSesion,
 			Date fechaPublicacion) {
 		String pagina = null;
 		AlumnoEvaluacionDAO alumnoEvaluacionDAO = new AlumnoEvaluacionDAO();
-		if (alumnoEvaluacionDAO.insertarEvaluacionAlumno(idEnseñanza, idCurso,
-				evaluacion, fechaInicio, fechaFin, fechaSesion,
+		if (alumnoEvaluacionDAO.insertarEvaluacionAlumno(idCentroEstudio, numero,
+				descripcion, fechaInicio, fechaFin, fechaSesion,
 				fechaPublicacion)) {
 			pagina = "insertarAlumnoEvaluacionExito";
 		} else {
