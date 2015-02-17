@@ -14,6 +14,11 @@
 			<version>3.8.1</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>  
+            <groupId>org.primefaces</groupId>  
+            <artifactId>primefaces</artifactId>  
+            <version>5.1</version>  
+        </dependency>
 		<!-- MYSQL database driver -->
 		<dependency>
 			<groupId>mysql</groupId>

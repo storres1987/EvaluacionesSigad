@@ -27,7 +27,7 @@ public class VerAlumnoEvaluacionListadoBean {
 	private AlumnoEvaluacionVO alumnoEvaluacionVO;
 
 	private ArrayList<AlumnoEvaluacionVO> alumnoEvaluacionListadoVO;
-
+	private ArrayList<String> listadoEnsenanzas;
 	public int getIdEvaluacion() {
 		return idEvaluacion;
 	}
@@ -125,5 +125,20 @@ public class VerAlumnoEvaluacionListadoBean {
 		return pagina;
 
 	}
+
+
+	public ArrayList<String> rellenarComboEnsenanza(){
+			AlumnoEvaluacionDAO alumnoEvaluacionDAO = new AlumnoEvaluacionDAO();
+			listadoEnsenanzas=new ArrayList<String>();
+			return listadoEnsenanzas=alumnoEvaluacionDAO.rellenarComboEnsenanza();
+		}
+
+		public ArrayList<String> getListadoEnsenanzas() {
+			return listadoEnsenanzas;
+		}
+
+		public void setListadoEnsenanzas(ArrayList<String> listadoEnsenanzas) {
+			this.listadoEnsenanzas = listadoEnsenanzas;
+		}
 
 }

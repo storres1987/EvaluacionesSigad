@@ -50,7 +50,7 @@ public class AlumnoEvaluacionDAO implements Serializable,
 			rs = stm.executeQuery("select * from evaluacion");
 			while (rs.next()) {
 				AlumnoEvaluacionVO evaluacion = new AlumnoEvaluacionVO();
-				evaluacion.setIdEvaluacion(rs.getInt("id"));
+				evaluacion.setIdEvaluacion(rs.getInt("id_evaluacion"));
 				evaluacion.setIdEnsenanza(rs.getInt("id_ensenanza"));
 				evaluacion.setIdCurso(rs.getInt("id_curso"));
 				evaluacion.setEvaluacion(rs.getInt("evaluacion"));
@@ -92,14 +92,14 @@ public class AlumnoEvaluacionDAO implements Serializable,
 			PreparedStatement pstm;
 			Statement stm = conexion.createStatement();
 			ResultSet rs;
-			String consulta = "SELECT * FROM evaluacion where id =?";
+			String consulta = "SELECT * FROM evaluacion where id_evaluacion =?";
 			pstm = conexion.prepareStatement(consulta);
 			pstm.setInt(1, idEvaluacion);
 			rs = pstm.executeQuery();
 
 			while (rs.next()) {
 				AlumnoEvaluacionVO detalleEvaluacinesVO = new AlumnoEvaluacionVO();
-				detalleEvaluacinesVO.setEvaluacion(rs.getInt("id"));
+				detalleEvaluacinesVO.setEvaluacion(rs.getInt("id_evaluacion"));
 				detalleEvaluacinesVO.setIdEnsenanza(rs.getInt("id_ensenanza"));
 				detalleEvaluacinesVO.setIdCurso(rs.getInt("id_curso"));
 				detalleEvaluacinesVO.setEvaluacion(rs.getInt("evaluacion"));
@@ -222,7 +222,7 @@ public class AlumnoEvaluacionDAO implements Serializable,
 		try {
 			conexion = ds.getConnection();
 			pstm = conexion
-					.prepareStatement("DELETE FROM evaluacion WHERE id=?");
+					.prepareStatement("DELETE FROM evaluacion WHERE id_evaluacion=?");
 			pstm.setInt(1, idEvaluacion);
 			pstm.executeUpdate();
 			return true;
@@ -239,6 +239,29 @@ public class AlumnoEvaluacionDAO implements Serializable,
 			}
 		}
 		return false;
+
+	}
+	public ArrayList<String> rellenarComboEnsenanza() {
+
+		Connection con;
+		ArrayList<String> listadoEnsenanzas = new ArrayList<String>();
+		try {
+			con = ds.getConnection();
+			String seleccion = "SELECT nombre FROM ensenanza e , evaluacion ev where e.id = ev.id_ensenanza group by e.id";
+			PreparedStatement ps = con.prepareStatement(seleccion);
+
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+
+				listadoEnsenanzas.add(rs.getString("e.nombre"));
+
+			}
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+		return listadoEnsenanzas;
 
 	}
 }
