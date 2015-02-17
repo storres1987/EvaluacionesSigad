@@ -25,7 +25,7 @@ public class AlumnoEvaluacionDAO implements Serializable,
 
 	public static final Logger logger = Logger
 			.getLogger(AlumnoEvaluacionVO.class.getName());
-	 DataSource ds;
+	DataSource ds;
 
 	public AlumnoEvaluacionDAO() {
 
@@ -45,9 +45,9 @@ public class AlumnoEvaluacionDAO implements Serializable,
 		Statement stm = null;
 		ResultSet rs = null;
 		try {
-			 conn = ds.getConnection();
-			 stm = conn.createStatement();
-			 rs = stm.executeQuery("select * from evaluacion");
+			conn = ds.getConnection();
+			stm = conn.createStatement();
+			rs = stm.executeQuery("select * from evaluacion");
 			while (rs.next()) {
 				AlumnoEvaluacionVO evaluacion = new AlumnoEvaluacionVO();
 				evaluacion.setIdEvaluacion(rs.getInt("id"));
@@ -66,10 +66,19 @@ public class AlumnoEvaluacionDAO implements Serializable,
 					Level.SEVERE,
 					"Error en EvaluacionesDAO.getallEvaluaciones:"
 							+ e.getMessage());
-		}finally {
-			try { stm.close(); } catch (Exception e) {}
-			try { conn.close(); } catch (Exception e) {}
-			try { rs.close(); } catch (Exception e) {}
+		} finally {
+			try {
+				stm.close();
+			} catch (Exception e) {
+			}
+			try {
+				conn.close();
+			} catch (Exception e) {
+			}
+			try {
+				rs.close();
+			} catch (Exception e) {
+			}
 		}
 		return listaEvaluaciones;
 	}
@@ -112,10 +121,10 @@ public class AlumnoEvaluacionDAO implements Serializable,
 	public boolean insertarEvaluacionAlumno(int idEnsenanza, int idCurso,
 			int evaluacion, Date fechaInicio, Date fechaFin, Date fechaSesion,
 			Date fechaPublicacion) {
-		
+
 		Connection conn = null;
 		PreparedStatement pstm = null;
-		
+
 		try {
 
 			java.sql.Date fechaI = new java.sql.Date(fechaInicio.getTime());
@@ -142,16 +151,67 @@ public class AlumnoEvaluacionDAO implements Serializable,
 					"Error en AlumnoEvaluacionDAO.insertarEvaluacionAlumno:"
 							+ e.getMessage());
 		} finally {
-			try { pstm.close(); } catch (Exception e) {}
-			try { conn.close(); } catch (Exception e) {}
+			try {
+				pstm.close();
+			} catch (Exception e) {
+			}
+			try {
+				conn.close();
+			} catch (Exception e) {
+			}
 		}
-		
+
 		return false;
-	
+
 	}
 
-	public void EditarEvaluacionesVO() {
-		// TODO Auto-generated method stub
+	// Actualizar una evaluacion
+
+	public boolean actualizarEvaluacionAlumno(int idEvaluacion,
+			int idEnsenanza, int idCurso, int evaluacion, Date fechaInicio,
+			Date fechaFin, Date fechaSesion, Date fechaPublicacion) {
+
+		Connection conn = null;
+		PreparedStatement pstm = null;
+
+		try {
+
+			java.sql.Date fechaI = new java.sql.Date(fechaInicio.getTime());
+			java.sql.Date fechaF = new java.sql.Date(fechaFin.getTime());
+			java.sql.Date fechaS = new java.sql.Date(fechaSesion.getTime());
+			java.sql.Date fechaP = new java.sql.Date(fechaPublicacion.getTime());
+
+			conn = ds.getConnection();
+			String query = "update evaluacion set id_ensenanza=?, id_curso=?, evaluacion=?, fecha_inicio=?, fecha_final=?, fecha_sesion=?, fecha_publicacion=? where id_evaluacion=?";
+			pstm = conn.prepareStatement(query);
+			pstm.setInt(1, idEnsenanza);
+			pstm.setInt(2, idCurso);
+			pstm.setInt(3, evaluacion);
+			pstm.setDate(4, fechaI);
+			pstm.setDate(5, fechaF);
+			pstm.setDate(6, fechaS);
+			pstm.setDate(7, fechaP);
+			pstm.setInt(8, idEvaluacion);
+
+			return true;
+
+		} catch (Exception e) {
+			Logger.getLogger(getClass().getName()).log(
+					Level.SEVERE,
+					"Error en AlumnoEvaluacionDAO.actualizarEvaluacionAlumno:"
+							+ e.getMessage());
+		} finally {
+			try {
+				pstm.close();
+			} catch (Exception e) {
+			}
+			try {
+				conn.close();
+			} catch (Exception e) {
+			}
+		}
+
+		return false;
 
 	}
 
@@ -160,17 +220,23 @@ public class AlumnoEvaluacionDAO implements Serializable,
 		Connection conexion = null;
 		PreparedStatement pstm = null;
 		try {
-			 conexion = ds.getConnection();
-			 pstm = conexion
+			conexion = ds.getConnection();
+			pstm = conexion
 					.prepareStatement("DELETE FROM evaluacion WHERE id=?");
 			pstm.setInt(1, idEvaluacion);
 			pstm.executeUpdate();
 			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
-			try { pstm.close(); } catch (Exception e) {}
-			try { conexion.close(); } catch (Exception e) {}
+		} finally {
+			try {
+				pstm.close();
+			} catch (Exception e) {
+			}
+			try {
+				conexion.close();
+			} catch (Exception e) {
+			}
 		}
 		return false;
 

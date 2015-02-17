@@ -5,10 +5,10 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
-	
+
 </h:head>
 <h:body>
-<h3>Evaluaciones del Alumno</h3>
+	<h3>Evaluaciones del Alumno</h3>
 	<h:form>
 		<h:commandButton value="Mostrar evaluaciones generales"
 			action="#{verAlumnoEvaluacionListadoBean.getAlumnoEvaluacionListado()}"></h:commandButton>
@@ -22,13 +22,16 @@
 	<br />
 	<a href="insertarAlumnoEvaluacion.xhtml">Insertar evaluacion para
 		un alumno</a>
-<h:form>
-	<!-- el id que se introduce lo manda a #{eliminarAlumnoEvaluacionBean.idEvaluacion} -->
+	<h:form>
+		<!-- el id que se introduce lo manda a #{eliminarAlumnoEvaluacionBean.idEvaluacion} -->
 		<h:inputText value="#{eliminarAlumnoEvaluacionBean.idEvaluacion}" />
 		<!--  despues ejecuta el metodo del boton eliminarAlumnoEvaluacionBean.eliminarEvaluacionAlumno(eliminarAlumnoEvaluacionBean.idEvaluacion)-->
 		<h:commandButton value="Eliminar Evaluacion"
 			action="#{eliminarAlumnoEvaluacionBean.eliminarEvaluacionAlumno(eliminarAlumnoEvaluacionBean.idEvaluacion)}"></h:commandButton>
 	</h:form>
+	<br />
+	<a href="actualizarAlumnoEvaluacion.xhtml">Actualizar evaluacion
+		del alumno</a>
 </h:body>
 </html>
 
