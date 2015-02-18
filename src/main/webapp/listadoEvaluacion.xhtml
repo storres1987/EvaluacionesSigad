@@ -2,73 +2,78 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:f="http://java.sun.com/jsf/core"      
-      xmlns:h="http://java.sun.com/jsf/html">
- 
-    <h:head>
-        <title>Datos de Evaluación</title>
-    </h:head>
-    <h:body>
-    	<h1>Datos de Evaluación</h1>
- 
- 		<h:dataTable value="#{evaluacionesDAO.getallEvaluaciones()}" var="e"
-    			styleClass="order-table"
-    			headerClass="order-table-header"
-    			rowClasses="order-table-odd-row,order-table-even-row"
-    		>
- 
-    		<h:column>
-    			<f:facet name="header">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:body>
+
+	<ui:composition template="/template/common/commonLayout.xhtml">
+
+		<ui:define name="content">
+			<h1>Datos de Evaluación</h1>
+
+			<h:dataTable value="#{evaluacionesDAO.getallEvaluaciones()}" var="e"
+				styleClass="order-table" headerClass="order-table-header"
+				rowClasses="order-table-odd-row,order-table-even-row">
+
+				<h:column>
+					<f:facet name="header">
     				id_evaluacion
     			</f:facet>
     				#{e.id}
     		</h:column>
- 
-    		<h:column>
-    			<f:facet name="header">
+
+				<h:column>
+					<f:facet name="header">
     				id_ensenanza
 				</f:facet>
     				#{e.id_centro_estudio}
     		</h:column>
- 
- 			<h:column>
-    			<f:facet name="header">
+
+				<h:column>
+					<f:facet name="header">
     				id_curso
 				</f:facet>
     				#{e.numero}
     		</h:column>
- 
-    		<h:column>
-    			<f:facet name="header">
+
+				<h:column>
+					<f:facet name="header">
     				Evaluacion
 				</f:facet>
     				#{e.descripcion}
     		</h:column>
-    		<h:column>
-    			<f:facet name="header">
+				<h:column>
+					<f:facet name="header">
     				fecha_inicio
 				</f:facet>
     				#{e.fecha_inicio}
     		</h:column>
-    		<h:column>
-    			<f:facet name="header">
+				<h:column>
+					<f:facet name="header">
     				fecha_fin
 				</f:facet>
     				#{e.fecha_fin}
     		</h:column>
-    		<h:column>
-    			<f:facet name="header">
+				<h:column>
+					<f:facet name="header">
     				fecha_sesion
 				</f:facet>
     				#{e.fecha_sesion}
     		</h:column>
-    		<h:column>
-    			<f:facet name="header">
+				<h:column>
+					<f:facet name="header">
     				fecha_publicacion
 				</f:facet>
     				#{e.fecha_publicacion}
     		</h:column>
- 
-    	</h:dataTable>
-    </h:body>
+
+			</h:dataTable>
+		</ui:define>
+
+	</ui:composition>
+
+</h:body>
+
 </html>

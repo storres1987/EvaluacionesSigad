@@ -19,7 +19,7 @@ import javax.sql.DataSource;
 import es.open4job.model.vo.AlumnoEvaluacionVO;
 
 public class AlumnoEvaluacionDAO implements Serializable,
-		AlumnoEvaluacionInterfaz {
+		AlumnoEvaluacionDAOInterfaz {
 
 	private static final long serialVersionUID = 1L;
 

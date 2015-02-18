@@ -13,6 +13,10 @@ import es.open4job.model.dao.AlumnoEvaluacionDAO;
 @RequestScoped
 public class ActualizarAlumnoEvaluacionBean implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int id;
 	private int idCentroEstudio;
 	private int numero;

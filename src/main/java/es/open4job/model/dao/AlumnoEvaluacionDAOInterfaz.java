@@ -5,7 +5,7 @@ import java.util.Date;
 
 import es.open4job.model.vo.*;
 
-public interface AlumnoEvaluacionInterfaz {
+public interface AlumnoEvaluacionDAOInterfaz {
 
 	public abstract ArrayList<AlumnoEvaluacionVO> getAlumnoEvaluacionListado();
 

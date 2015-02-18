@@ -1,46 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui">
-<h:head>
-	<title>Evaluacion Alumno</title>
-</h:head>
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
 <h:body>
-	<h1>Evaluacion del Alumno</h1>
-	<h:form>
+
+	<ui:composition template="/template/common/commonLayout.xhtml">
+
+		<ui:define name="content">
+			<h1>Evaluacion del Alumno</h1>
+			<h:form>
 		Introduce los datos de la evaluacion
 		<br />Id Centro Estudio<h:inputText
-			value="#{insertarAlumnoEvaluacionBean.idCentroEstudio}"></h:inputText>
-		<br />Numero<h:inputText
-			value="#{insertarAlumnoEvaluacionBean.numero}"></h:inputText>
-		<br />Descripcion
-		<p:inputText  value="#{insertarAlumnoEvaluacionBean.descripcion}" >
-		</p:inputText>
-		
-		
-		<br />Fecha Inicio<h:inputText
-			value="#{insertarAlumnoEvaluacionBean.fechaInicio}">
-			<f:convertDateTime pattern="dd-mm-yyyy" />
-		</h:inputText>
-		<br />Fecha Fin<h:inputText
-			value="#{insertarAlumnoEvaluacionBean.fechaFin}">
-			<f:convertDateTime pattern="dd-mm-yyyy" />
-		</h:inputText>
-		<br />Fecha Sesion<h:inputText
-			value="#{insertarAlumnoEvaluacionBean.fechaSesion}">
-			<f:convertDateTime pattern="dd-mm-yyyy" />
-		</h:inputText>
-		<br />Fecha Publicacion<h:inputText
-			value="#{insertarAlumnoEvaluacionBean.fechaPublicacion}">
-			<f:convertDateTime pattern="dd-mm-yyyy" />
-		</h:inputText>
+					value="#{insertarAlumnoEvaluacionBean.idCentroEstudio}"></h:inputText>
+				<br />Numero<h:inputText
+					value="#{insertarAlumnoEvaluacionBean.numero}"></h:inputText>
+				<br />Descripcion
+		<h:inputText value="#{insertarAlumnoEvaluacionBean.descripcion}">
+				</h:inputText>
 
-		<br />
-		<h:commandButton value="Guardar evaluacion del alumno"
-			action="#{insertarAlumnoEvaluacionBean.insertarEvaluacionAlumno(insertarAlumnoEvaluacionBean.idCentroEstudio, insertarAlumnoEvaluacionBean.numero, insertarAlumnoEvaluacionBean.descripcion, insertarAlumnoEvaluacionBean.fechaInicio, insertarAlumnoEvaluacionBean.fechaFin, insertarAlumnoEvaluacionBean.fechaSesion, insertarAlumnoEvaluacionBean.fechaPublicacion)}"></h:commandButton>
-	</h:form>
+
+				<br />Fecha Inicio<h:inputText
+					value="#{insertarAlumnoEvaluacionBean.fechaInicio}">
+					<f:convertDateTime pattern="dd-mm-yyyy" />
+				</h:inputText>
+				<br />Fecha Fin<h:inputText
+					value="#{insertarAlumnoEvaluacionBean.fechaFin}">
+					<f:convertDateTime pattern="dd-mm-yyyy" />
+				</h:inputText>
+				<br />Fecha Sesion<h:inputText
+					value="#{insertarAlumnoEvaluacionBean.fechaSesion}">
+					<f:convertDateTime pattern="dd-mm-yyyy" />
+				</h:inputText>
+				<br />Fecha Publicacion<h:inputText
+					value="#{insertarAlumnoEvaluacionBean.fechaPublicacion}">
+					<f:convertDateTime pattern="dd-mm-yyyy" />
+				</h:inputText>
+
+				<br />
+				<h:commandButton value="Guardar evaluacion del alumno"
+					action="#{insertarAlumnoEvaluacionBean.insertarEvaluacionAlumno(insertarAlumnoEvaluacionBean.idCentroEstudio, insertarAlumnoEvaluacionBean.numero, insertarAlumnoEvaluacionBean.descripcion, insertarAlumnoEvaluacionBean.fechaInicio, insertarAlumnoEvaluacionBean.fechaFin, insertarAlumnoEvaluacionBean.fechaSesion, insertarAlumnoEvaluacionBean.fechaPublicacion)}"></h:commandButton>
+			</h:form>
+		</ui:define>
+
+	</ui:composition>
+
 </h:body>
+
 </html>
